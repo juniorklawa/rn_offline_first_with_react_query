@@ -8,6 +8,7 @@ const ExercisesPage = () => {
   const {data: fetchedExercises} = useQuery({
     queryKey: ['exercises'],
     queryFn: () => fakeApi.getTodos(),
+    staleTime: Infinity,
     cacheTime: Infinity,
   });
 

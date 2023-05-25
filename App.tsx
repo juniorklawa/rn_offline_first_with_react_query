@@ -28,6 +28,11 @@ const App = () => {
   return (
     <PersistQueryClientProvider
       persistOptions={{persister}}
+      onSuccess={() =>
+        queryClient
+          .resumePausedMutations()
+          .then(() => queryClient.invalidateQueries())
+      }
       client={queryClient}>
       {!isOnline && <OfflineBanner />}
       <ExercisesPage />
